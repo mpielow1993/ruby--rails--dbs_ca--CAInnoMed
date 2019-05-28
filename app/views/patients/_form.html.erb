@@ -1,0 +1,82 @@
+<%= form_with(model: patient, local: true) do |form| %>
+  <% if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :patient_id %>
+    <%= form.number_field :patient_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname %>
+    <%= form.text_field :surname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :county %>
+    <%= form.text_field :county %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :doctor_id %>
+    <%= form.text_field :doctor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :appointment_id %>
+    <%= form.text_field :appointment_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :perscription_id %>
+    <%= form.text_field :perscription_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diagnosis_id %>
+    <%= form.text_field :diagnosis_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :consultation_id %>
+    <%= form.text_field :consultation_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
