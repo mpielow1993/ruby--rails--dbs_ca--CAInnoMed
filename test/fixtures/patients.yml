@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  firstname: MyString
+  surname: MyString
+  address: MyString
+  city: MyString
+  county: MyString
+  email: MyString
+  doctor: one
+  appointment: one
+  perscription: one
+  diagnosis: one
+  consultation: one
+  image_url: MyString
+
+two:
+  patient_id: 1
+  firstname: MyString
+  surname: MyString
+  address: MyString
+  city: MyString
+  county: MyString
+  email: MyString
+  doctor: two
+  appointment: two
+  perscription: two
+  diagnosis: two
+  consultation: two
+  image_url: MyString
