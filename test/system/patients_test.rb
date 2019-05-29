@@ -14,18 +14,14 @@ class PatientsTest < ApplicationSystemTestCase
     visit patients_url
     click_on "New Patient"
 
-    fill_in "Address", with: @patient.address
-    fill_in "Appointment", with: @patient.appointment_id
+    fill_in "Address 1", with: @patient.address_1
+    fill_in "Address 2", with: @patient.address_2
     fill_in "City", with: @patient.city
-    fill_in "Consultation", with: @patient.consultation_id
+    fill_in "Contact number", with: @patient.contact_number
     fill_in "County", with: @patient.county
-    fill_in "Diagnosis", with: @patient.diagnosis_id
-    fill_in "Doctor", with: @patient.doctor_id
     fill_in "Email", with: @patient.email
     fill_in "Firstname", with: @patient.firstname
-    fill_in "Image url", with: @patient.image_url
-    fill_in "Patient", with: @patient.patient_id
-    fill_in "Perscription", with: @patient.perscription_id
+    fill_in "Password", with: @patient.password
     fill_in "Surname", with: @patient.surname
     click_on "Create Patient"
 
@@ -37,18 +33,14 @@ class PatientsTest < ApplicationSystemTestCase
     visit patients_url
     click_on "Edit", match: :first
 
-    fill_in "Address", with: @patient.address
-    fill_in "Appointment", with: @patient.appointment_id
+    fill_in "Address 1", with: @patient.address_1
+    fill_in "Address 2", with: @patient.address_2
     fill_in "City", with: @patient.city
-    fill_in "Consultation", with: @patient.consultation_id
+    fill_in "Contact number", with: @patient.contact_number
     fill_in "County", with: @patient.county
-    fill_in "Diagnosis", with: @patient.diagnosis_id
-    fill_in "Doctor", with: @patient.doctor_id
     fill_in "Email", with: @patient.email
     fill_in "Firstname", with: @patient.firstname
-    fill_in "Image url", with: @patient.image_url
-    fill_in "Patient", with: @patient.patient_id
-    fill_in "Perscription", with: @patient.perscription_id
+    fill_in "Password", with: @patient.password
     fill_in "Surname", with: @patient.surname
     click_on "Update Patient"
 

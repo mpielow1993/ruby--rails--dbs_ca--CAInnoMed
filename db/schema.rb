@@ -10,29 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_154100) do
+ActiveRecord::Schema.define(version: 2019_05_29_144734) do
+
+  create_table "doctors", force: :cascade do |t|
+    t.boolean "access_level"
+    t.string "first_name"
+    t.string "surname"
+    t.string "qualifications"
+    t.string "address_line1"
+    t.string "address_line2"
+    t.string "email"
+    t.string "mobile_no"
+    t.string "office_no"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "patients", force: :cascade do |t|
-    t.integer "patient_id"
     t.string "firstname"
     t.string "surname"
-    t.string "address"
+    t.string "address_1"
+    t.string "address_2"
     t.string "city"
     t.string "county"
     t.string "email"
-    t.integer "doctor_id"
-    t.integer "appointment_id"
-    t.integer "perscription_id"
-    t.integer "diagnosis_id"
-    t.integer "consultation_id"
-    t.string "image_url"
+    t.string "contact_number"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["appointment_id"], name: "index_patients_on_appointment_id"
-    t.index ["consultation_id"], name: "index_patients_on_consultation_id"
-    t.index ["diagnosis_id"], name: "index_patients_on_diagnosis_id"
-    t.index ["doctor_id"], name: "index_patients_on_doctor_id"
-    t.index ["perscription_id"], name: "index_patients_on_perscription_id"
   end
 
 end

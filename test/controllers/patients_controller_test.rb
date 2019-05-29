@@ -17,7 +17,7 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create patient" do
     assert_difference('Patient.count') do
-      post patients_url, params: { patient: { address: @patient.address, appointment_id: @patient.appointment_id, city: @patient.city, consultation_id: @patient.consultation_id, county: @patient.county, diagnosis_id: @patient.diagnosis_id, doctor_id: @patient.doctor_id, email: @patient.email, firstname: @patient.firstname, image_url: @patient.image_url, patient_id: @patient.patient_id, perscription_id: @patient.perscription_id, surname: @patient.surname } }
+      post patients_url, params: { patient: { address_1: @patient.address_1, address_2: @patient.address_2, city: @patient.city, contact_number: @patient.contact_number, county: @patient.county, email: @patient.email, firstname: @patient.firstname, password: @patient.password, surname: @patient.surname } }
     end
 
     assert_redirected_to patient_url(Patient.last)
@@ -34,7 +34,7 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update patient" do
-    patch patient_url(@patient), params: { patient: { address: @patient.address, appointment_id: @patient.appointment_id, city: @patient.city, consultation_id: @patient.consultation_id, county: @patient.county, diagnosis_id: @patient.diagnosis_id, doctor_id: @patient.doctor_id, email: @patient.email, firstname: @patient.firstname, image_url: @patient.image_url, patient_id: @patient.patient_id, perscription_id: @patient.perscription_id, surname: @patient.surname } }
+    patch patient_url(@patient), params: { patient: { address_1: @patient.address_1, address_2: @patient.address_2, city: @patient.city, contact_number: @patient.contact_number, county: @patient.county, email: @patient.email, firstname: @patient.firstname, password: @patient.password, surname: @patient.surname } }
     assert_redirected_to patient_url(@patient)
   end
 

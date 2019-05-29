@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :patient_id %>
-    <%= form.number_field :patient_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :firstname %>
     <%= form.text_field :firstname %>
   </div>
@@ -27,8 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.label :address_1 %>
+    <%= form.text_field :address_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address_2 %>
+    <%= form.text_field :address_2 %>
   </div>
 
   <div class="field">
@@ -47,33 +47,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :doctor_id %>
-    <%= form.text_field :doctor_id %>
+    <%= form.label :contact_number %>
+    <%= form.text_field :contact_number %>
   </div>
 
   <div class="field">
-    <%= form.label :appointment_id %>
-    <%= form.text_field :appointment_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :perscription_id %>
-    <%= form.text_field :perscription_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :diagnosis_id %>
-    <%= form.text_field :diagnosis_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :consultation_id %>
-    <%= form.text_field :consultation_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.text_field :image_url %>
+    <%= form.label :password %>
+    <%= form.text_field :password %>
   </div>
 
   <div class="actions">
