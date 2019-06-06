@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'static_pages/about'
-  get 'static_pages/contact'
-  get '/admin', to: 'users#admin_login'
-  get '/logout', to: 'users#logout'
+  resources :appointments
+  resources :prescriptions
+  resources :orders
+  devise_for :users
+  get 'home/index'
+  get 'cart/index'
+  get '/static_pages/about'
+  get '/static_pages/contact'
+  
   resources :doctors
   resources :patients
+  
+  
+  
+  root :to => 'home#index'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_161412) do
+ActiveRecord::Schema.define(version: 2019_06_06_141608) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer "patients_id"
+    t.integer "doctors_id"
+    t.datetime "appointment_time"
+    t.string "appointment_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctors_id"], name: "index_appointments_on_doctors_id"
+    t.index ["patients_id"], name: "index_appointments_on_patients_id"
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.boolean "access_level"
@@ -27,6 +38,14 @@ ActiveRecord::Schema.define(version: 2019_05_29_161412) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.datetime "order_date"
+    t.integer "patients_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patients_id"], name: "index_orders_on_patients_id"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "firstname"
     t.string "surname"
@@ -41,11 +60,27 @@ ActiveRecord::Schema.define(version: 2019_05_29_161412) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+  create_table "prescriptions", force: :cascade do |t|
+    t.string "drug"
+    t.integer "quantity"
+    t.integer "doctor_id"
+    t.integer "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
+    t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

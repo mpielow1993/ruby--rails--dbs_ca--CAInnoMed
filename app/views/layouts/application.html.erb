@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
     <title>InnoMedApp</title>
@@ -13,12 +13,32 @@
     <div id="navbar">
       <ul>
         <li><a href="/items">Products</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/static_pages/about">About</a></li>
+        <li><a href="/static_pages/contact">Contact Us</a></li>
         <li><a href="/Admin">Login</a></li>
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div>
+    <div id='container'>
+      <div id="content">
+        <% if flash[:notice] -%>
+            <p style="color: green"><%= flash[:notice] %></p>
+        <% end -%>
+        <%= yield %>
+      
+      </div>
+    </div>
+    
+    <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+     
     <%= yield %>
+    
+    <% if user_signed_in? %>
+        <div>Signed in as...<%= current_user.email %> (<%= link_to 'Sign Out', destroy_user_session_path %>)</div>
+      <% else %>
+       <%= link_to 'Register', new_user_registration_path %> <%= link_to 'Sign In', new_user_session_path %>
+       <% end %>
+    
   </body>
 </html>
