@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
-
+#Bootstrap
+gem 'bootstrap-sass'
 #Login bundle
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

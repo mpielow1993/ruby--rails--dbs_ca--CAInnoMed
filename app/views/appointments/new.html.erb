@@ -1,5 +1,9 @@
 <h1>New Appointment</h1>
 
-<%= render 'form', appointment: @appointment %>
+<body>
+    <%= render 'form', appointment: @appointment %>
+    <%= link_to 'Back', appointments_path %>
 
-<%= link_to 'Back', appointments_path %>
+</body>
+
+
