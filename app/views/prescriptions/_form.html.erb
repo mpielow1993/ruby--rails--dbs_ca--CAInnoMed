@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= form.label :doctor_id %>
-    <%= form.text_field :doctor_id %>
+    <%= form.hidden_field :doctor_id, value: @doctor.id %>
   </div>
 
   <div class="field">
     <%= form.label :patient_id %>
-    <%= form.text_field :patient_id %>
+    <%= form.collection_select :patient_id , Patient.all ,:id ,:firstname, prompt: "Pick Patient"%>
   </div>
 
   <div class="actions">

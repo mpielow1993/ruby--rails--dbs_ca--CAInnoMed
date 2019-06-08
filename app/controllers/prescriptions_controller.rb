@@ -15,6 +15,7 @@ class PrescriptionsController < ApplicationController
   # GET /prescriptions/new
   def new
     @prescription = Prescription.new
+    @doctor=Doctor.first
   end
 
   # GET /prescriptions/1/edit

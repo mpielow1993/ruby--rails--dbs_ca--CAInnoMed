@@ -5,15 +5,14 @@ Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
   get 'cart/index'
-  get '/static_pages/about'
-  get '/static_pages/contact'
+  get "about", to: "static_pages#about"
+  get "contact", to: "static_pages#contact"
   
   resources :doctors
   resources :patients
+
+  root :to => 'static_pages#home'
   
-  
-  
-  root :to => 'home#index'
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -12,12 +12,12 @@
 
 <p>
   <strong>Doctor:</strong>
-  <%= @prescription.doctor %>
+  <%= @prescription.doctor.first_name %>
 </p>
 
 <p>
   <strong>Patient:</strong>
-  <%= @prescription.patient %>
+  <%= @prescription.patient.firstname %> 
 </p>
 
 <%= link_to 'Edit', edit_prescription_path(@prescription) %> |
