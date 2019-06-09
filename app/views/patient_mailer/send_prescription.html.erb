@@ -1,0 +1,8 @@
+<h1>Your prescription, <%= @patient.full_name %></h1>
+<p>
+    You are being sent this by <%= @doctor.full_name %>, because of: <%= @prescription.diagnosis %>.
+</p>
+<p>
+    <%= @notes %>
+</p>
+<p>Thanks!</p>

@@ -18,5 +18,15 @@
   <%= @prescription.patient.full_name %> 
 </p>
 
+<p>
+  <strong>Diagnosis:</strong>
+  <%= @prescription.diagnosis %> 
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @prescription.notes %> 
+</p>
+
 <%= link_to 'Edit', edit_prescription_path(@prescription) %> |
 <%= link_to 'Back', prescriptions_path %>
