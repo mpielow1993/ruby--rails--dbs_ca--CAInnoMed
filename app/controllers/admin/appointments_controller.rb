@@ -1,5 +1,5 @@
 class Admin::AppointmentsController < ApplicationController
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.unpaid
   end
 end

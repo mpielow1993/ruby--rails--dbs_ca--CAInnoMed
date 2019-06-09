@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :patient_id %>
-    <%= form.collection_select :patient_id, User.all, :id, :full_name %>
+    <%= form.collection_select :patient_id, User.all, :id, :full_name, prompt: "Pick Patient" %>
   </div>
 
   <div class="field">

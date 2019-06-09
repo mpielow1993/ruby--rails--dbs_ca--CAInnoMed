@@ -2,13 +2,13 @@
 
 <h1>Appointments</h1>
 
-<table>
+<table class="table table-hover table-striped">
   <thead>
     <tr>
       <th>Patients</th>
       <th>Doctors</th>
-      <th>Appointment time</th>
-      <th>Appointment address</th>
+      <th>Time</th>
+      <th>Paid</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.patients %></td>
-        <td><%= appointment.doctors %></td>
-        <td><%= appointment.appointment_time %></td>
-        <td><%= appointment.appointment_address %></td>
+        <td><%= appointment.patient.full_name %></td>
+        <td><%= appointment.doctor.full_name %></td>
+        <td><%= appointment.time %></td>
+        <td><%= appointment.paid.to_s.titleize %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

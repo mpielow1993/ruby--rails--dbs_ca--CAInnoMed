@@ -14,12 +14,14 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions/new
   def new
+    redirect_to root_path, alert: "You're not a doctor!" unless current_user.is_doctor
+    
     @prescription = Prescription.new
-    @doctor=Doctor.first
   end
 
   # GET /prescriptions/1/edit
   def edit
+    redirect_to root_path, alert: "You're not a doctor!" unless current_user.is_doctor
   end
 
   # POST /prescriptions

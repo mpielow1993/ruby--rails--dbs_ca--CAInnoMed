@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :orders
   devise_for :users
   
+  post "/charge", to: "static_pages#charge"
+
   namespace :admin do
     resources :appointments
     resources :prescriptions

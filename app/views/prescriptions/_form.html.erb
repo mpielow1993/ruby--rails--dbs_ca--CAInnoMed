@@ -22,13 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :doctor_id %>
-    <%= form.hidden_field :doctor_id, value: @doctor.id %>
+    <%= form.label :patient_id %>
+    <%= form.collection_select :patient_id, User.all, :id, :full_name, prompt: "Pick Patient" %>
   </div>
 
   <div class="field">
-    <%= form.label :patient_id %>
-    <%= form.collection_select :patient_id , Patient.all ,:id ,:firstname, prompt: "Pick Patient"%>
+    <%= form.label :doctor_id %>
+    <%= form.collection_select :doctor_id, User.where(is_doctor: true), :id, :full_name, value: current_user.id %>
   </div>
 
   <div class="actions">

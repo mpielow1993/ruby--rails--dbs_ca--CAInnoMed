@@ -58,18 +58,20 @@
 
 
 <!--------Flash-------------->
-    <div id='container'>
+    <div class="container">
       <div id="content">
+
         <% if flash[:notice] -%>
             <p style="color: green"><%= flash[:notice] %></p>
+        <% end -%>
+        <% if flash[:alert] -%>
+            <p style="color: red"><%= flash[:alert] %></p>
         <% end -%>
         <%= yield %>
       
       </div>
     </div>
-    
-    <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+  
     
     <% if user_signed_in? %>
         <div>Signed in as...<%= current_user.email %> (<%= link_to 'Sign Out', destroy_user_session_path %>)</div>
@@ -88,8 +90,6 @@
     <!-- /.container -->
   </footer>
 <!-- /Footer -->  
-    <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   </body>
 </html>
