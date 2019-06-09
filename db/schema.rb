@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_141608) do
     t.string "city"
     t.string "county"
     t.boolean "is_doctor"
-    t.boolean "is_admin"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

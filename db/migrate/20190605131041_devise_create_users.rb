@@ -17,7 +17,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :county
 
       t.boolean :is_doctor
-      t.boolean :is_admin
 
       ## Recoverable
       t.string   :reset_password_token

@@ -2,23 +2,19 @@
 
 <p>
   <strong>Patients:</strong>
-  <%= @appointment.patient.firstname %>
+  <%= @appointment.patient.full_name %>
 </p>
 
 <p>
   <strong>Doctors:</strong>
-  <%= @appointment.doctor.first_name %>
+  <%= @appointment.doctor.full_name %>
 </p>
 
 <p>
   <strong>Appointment time:</strong>
-  <%= @appointment.appointment_time %>
+  <%= @appointment.time %>
 </p>
 
-<p>
-  <strong>Appointment address:</strong>
-  <%= @appointment.appointment_address %>
-</p>
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |
 <%= link_to 'Back', appointments_path %>

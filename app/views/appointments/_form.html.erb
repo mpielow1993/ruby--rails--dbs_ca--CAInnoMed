@@ -13,24 +13,18 @@
 
   <div class="field">
     <%= form.label :patient_id %>
-    <%= form.text_field :patient_id %>
+    <%= form.collection_select :patient_id, User.all, :id, :full_name %>
   </div>
 
   <div class="field">
     <%= form.label :doctor_id %>
-    <%= form.text_field :doctor_id %>
+    <%= form.collection_select :doctor_id, User.where(is_doctor: true), :id, :full_name, value: current_user.id %>
   </div>
 
   <div class="field">
-    <%= form.label :appointment_time %>
-    <%= form.datetime_select :appointment_time %>
+    <%= form.label :time %>
+    <%= form.datetime_select :time %>
   </div>
-
-  <div class="field">
-    <%= form.label :appointment_address %>
-    <%= form.text_field :appointment_address %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
