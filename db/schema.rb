@@ -13,51 +13,13 @@
 ActiveRecord::Schema.define(version: 2019_06_06_141608) do
 
   create_table "appointments", force: :cascade do |t|
-    t.integer "patients_id"
-    t.integer "doctors_id"
-    t.datetime "appointment_time"
-    t.string "appointment_address"
+    t.integer "patient_id"
+    t.integer "doctor_id"
+    t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctors_id"], name: "index_appointments_on_doctors_id"
-    t.index ["patients_id"], name: "index_appointments_on_patients_id"
-  end
-
-  create_table "doctors", force: :cascade do |t|
-    t.boolean "access_level"
-    t.string "first_name"
-    t.string "surname"
-    t.string "qualifications"
-    t.string "address_line1"
-    t.string "address_line2"
-    t.string "email"
-    t.string "mobile_no"
-    t.string "office_no"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.datetime "order_date"
-    t.integer "patients_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["patients_id"], name: "index_orders_on_patients_id"
-  end
-
-  create_table "patients", force: :cascade do |t|
-    t.string "firstname"
-    t.string "surname"
-    t.string "address_1"
-    t.string "address_2"
-    t.string "city"
-    t.string "county"
-    t.string "email"
-    t.string "contact_number"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "prescriptions", force: :cascade do |t|
@@ -74,6 +36,15 @@ ActiveRecord::Schema.define(version: 2019_06_06_141608) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "first_name"
+    t.string "surname"
+    t.string "contact_number"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "city"
+    t.string "county"
+    t.boolean "is_doctor"
+    t.boolean "is_admin"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
