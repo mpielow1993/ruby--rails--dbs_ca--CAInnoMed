@@ -50,9 +50,6 @@
            
           <% if user_signed_in? %>
             <div class="nav-link">Signed in as: <%= current_user.email %> (<%= link_to "Logout", destroy_user_session_path, :method => :delete %>)</div>
-            <li class="nav-item">
-              <%=link_to "Logout", destroy_user_session_path, class:"nav-link" %> <!--e-->
-            </li>
           <% else %>
             <li class="nav-item">
               <%= link_to "Login", new_user_session_path, class:"nav-link" %> <!--e-->
@@ -75,8 +72,8 @@
         <% if flash[:alert] -%>
             <p style="color: red"><%= flash[:alert] %></p>
         <% end -%>
+        
         <%= yield %>
-      
       </div>
     </div>
   
@@ -90,7 +87,6 @@
     <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <%= yield %>
     <%= render "layouts/footer" %>
   </body>
 
