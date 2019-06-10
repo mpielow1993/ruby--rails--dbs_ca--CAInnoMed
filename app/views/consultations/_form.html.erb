@@ -1,4 +1,4 @@
-<%= form_with(model: consultation, local: true) do |form| %>
+<%= form_with(model: consultation, local: true, multipart: true) do |form| %>
   <% if consultation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(consultation.errors.count, "error") %> prohibited this consultation from being saved:</h2>
@@ -15,13 +15,8 @@
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
-
-  <%= form.fields_for :posts do |ff| %>
-    <div class="field">
-      <%= ff.label :content %>
-      <%= ff.text_area :content, class: "form-control", rows: 1 %>
-    </div>
-  <% end %>
+  
+  <%= render "post_form", form: form %>
 
   <div class="actions">
     <%= form.submit %>

@@ -4,3 +4,11 @@
 
 <%= link_to 'Show', @consultation %> |
 <%= link_to 'Back', consultations_path %>
+
+<br />
+<% appointment = Appointment.find_by(consultation_id: @consultation.id) %>
+<% if appointment.present? %>
+  <%= link_to "View Appointment", appointment_path(appointment), class: "btn btn-outline-success btn-sm" %>
+<% else %>
+  <%= link_to "Make Appointment", new_appointment_path(consultation_id: @consultation), class: "btn btn-outline-success btn-sm" %>
+<% end %>

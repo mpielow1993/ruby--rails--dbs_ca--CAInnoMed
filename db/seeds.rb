@@ -8,7 +8,7 @@
 
 User.create!(email: "e@test.com", first_name: "Emily", surname: "Bowe", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
 
-(1..50).each do |number|
+(1..5).each do |number|
   User.create!(email: "#{number}@test.com", first_name: "#{number}", surname: "#{number}son", password: "secretpw", password_confirmation: "secretpw", is_doctor: [true, false].sample)
 end
 

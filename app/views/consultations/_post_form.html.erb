@@ -1,0 +1,11 @@
+  <%= form.fields_for :posts do |ff| %>
+    <%= cycle(
+      "<div class='odd'>Patient</div>".html_safe,
+      "<div class='even'>Doctor</div>".html_safe
+    ) %>
+    <div class="field">
+      <%= ff.text_area :content, class: "form-control", rows: 1 %>
+      <%= ff.file_field :attachment %>
+    </div>
+    <br />
+  <% end %>

@@ -14,26 +14,31 @@
 </p>
 
 <%= form_with(model: @consultation, local: true) do |form| %>
-  <%= form.fields_for :posts do |ff| %>
-    <%= cycle(
-      "<div class='odd'>Patient</div>".html_safe,
-      "<div class='even'>Doctor</div>".html_safe
-    ) %>
-    <div class="field">
-      <%= ff.text_area :content, class: "form-control", rows: 1 %>
-    </div>
-    <br />
-  <% end %>
+  <%= render "post_form", form: form %>
 
+<div class="row">
+<% @consultation.posts.each do |post| %>
+  <% if post.attachment.attached? %>
+  <div class="col-sm-4">
+    <%= image_tag post.attachment.variant(resize: "100x100", monochrome: true, rotate: "-90") %>
+    <%= image_tag post.attachment.variant(resize: "200x200") %>
+    <br />
+  </div>
+  <% end %>
+<% end %>
+</div>
+
+<br />
   <div class="actions">
     <%= form.submit "Submit", class: "btn btn-primary btn-sm" %>
-    <% appointment = Appointment.find_by(consultation_id: @consultation.id) %>
-    <% if appointment.present? %>
-      <%= link_to "View Appointment", appointment_path(appointment), class: "btn btn-outline-success btn-sm" %>
-    <% else %>
-      <%= link_to "Make Appointment", new_appointment_path(consultation_id: @consultation), class: "btn btn-outline-success btn-sm" %>
-    <% end %>
-    <%= link_to 'Edit', edit_consultation_path(@consultation), class: "btn btn-outline-primary btn-sm" %>
-    <%= link_to 'Back', consultations_path, class: "btn btn-outline-danger btn-sm" %>
   </div>
 <% end %>
+<br />
+<% appointment = Appointment.find_by(consultation_id: @consultation.id) %>
+<% if appointment.present? %>
+  <%= link_to "View Appointment", appointment_path(appointment), class: "btn btn-outline-success btn-sm" %>
+<% else %>
+  <%= link_to "Make Appointment", new_appointment_path(consultation_id: @consultation), class: "btn btn-outline-success btn-sm" %>
+<% end %>
+<%= link_to 'Edit', edit_consultation_path(@consultation), class: "btn btn-outline-primary btn-sm" %>
+<%= link_to 'Back', consultations_path, class: "btn btn-outline-danger btn-sm" %>
