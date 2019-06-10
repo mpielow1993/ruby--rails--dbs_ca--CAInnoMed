@@ -2,6 +2,8 @@ class Appointment < ApplicationRecord
   belongs_to :doctor, :class_name => 'User'
   belongs_to :patient, :class_name => 'User'
   
+  has_one :consultation
+  
   scope :unpaid, -> { where(paid: false) }
   
   validate :doctor_isnt_own_patient

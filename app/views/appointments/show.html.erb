@@ -13,6 +13,10 @@
   <%= @appointment.time %>
 </p>
 
+<p>
+  <%= link_to "Remote Consultation Notes", Consultation.find_by(id: @appointment.consultation_id) %>
+</p>
+
 <% if @appointment.paid %>
 <p>
   <strong>Paid:</strong>

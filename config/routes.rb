@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :appointments
   resources :prescriptions
+  resources :consultations
   resources :orders
   devise_for :users
   
