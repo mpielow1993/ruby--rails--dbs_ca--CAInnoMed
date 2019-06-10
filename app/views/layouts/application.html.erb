@@ -9,6 +9,8 @@
     <meta name="author" content="">
     
     
+    <%= javascript_include_tag :application %>
+    
     <!-- Bootstrap core CSS -->
   <link href="https://blackrockdigital.github.io/startbootstrap-small-business/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="/home/index">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -42,88 +44,28 @@
           <li class="nav-item">
             <a class="nav-link" href="/static_pages/contact">Contact</a>
           </li>
+           
+           <% if user_signed_in? %>
            <li class="nav-item">
-            <a class="nav-link" href="/Admin">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
-          
+             <div class="nav-link">Signed in as: <%= current_user.email %> (<%= link_to "Logout", destroy_user_session_path, :method => :delete %>)</div>
+           </li>   
+              
+           <% else %>
+            <li class="nav-item">
+            <a class="nav-link" href="/users/login">Login</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/users/new">Register</a>
+            <% end %>
+            </li>
+         
         </ul>
       </div>
     </div>
   </nav>
 <!-------/Navigation------->
-    
-<!-- Page Content -->
-  <div class="container">
+ 
 
-    <!-- Heading Row -->
-    <div class="row align-items-center my-5">
-      <div class="col-lg-7">
-        <%= image_tag(image_path('InnoMed.jpg')) -%>
-      </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-5">
-        <h1 class="font-weight-light">InnoMedApp</h1>
-        <p>Are you broken? Let us fix you.</p>
-        <a class="btn btn-primary" href="#">Book Appointment</a>
-      </div>
-      <!-- /.col-md-4 -->
-    </div>
-    <!-- /.row -->
-
-    <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-      <div class="card-body">
-        <p class="text-white m-0">Manage your health & your care, all in one place.</p>
-      </div>
-    </div>
-
-    <!-- Content Row -->
-    <div class="row">
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Appointments</h2>
-            <p class="card-text">Book & manage appointments with GPs, Consultatants, Nurses & Midwives </p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Book Appointment Now</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title">Prescriptions</h2>
-            <p class="card-text">Purchase & manage your prescriptions - no need to leave your home! All prescriptions prescribed to you by our Doctors electronically transferred to you!</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">Manage Prescriptions</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="card-title"></h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-
-    </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
 
 <!--------Flash-------------->
     <div id='container'>
@@ -131,7 +73,7 @@
         <% if flash[:notice] -%>
             <p style="color: green"><%= flash[:notice] %></p>
         <% end -%>
-        <%= yield %>
+       
       
       </div>
     </div>
@@ -139,25 +81,17 @@
     <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
     
-    <% if user_signed_in? %>
-        <div>Signed in as...<%= current_user.email %> (<%= link_to 'Sign Out', destroy_user_session_path %>)</div>
-      <% else %>
-       <%= link_to 'Register', new_user_registration_path %> <%= link_to 'Sign In', new_user_session_path %>
-       <% end %>
+    
 <!----------/Flash---------->
 
-    
-    
-<!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-<!-- /Footer -->  
+ 
+
+
     <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
+
 </html>

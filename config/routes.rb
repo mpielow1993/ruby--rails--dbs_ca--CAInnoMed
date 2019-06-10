@@ -2,11 +2,18 @@ Rails.application.routes.draw do
   resources :appointments
   resources :prescriptions
   resources :orders
-  devise_for :users
+  
+  devise_for :users 
+  
   get 'home/index'
   get 'cart/index'
   get '/static_pages/about'
   get '/static_pages/contact'
+  get '/users/new'
+  get '/users/login'
+  get '/sessions/new'
+  get '/registrations/new'
+
   
   resources :doctors
   resources :patients
