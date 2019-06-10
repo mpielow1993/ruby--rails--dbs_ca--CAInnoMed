@@ -8,8 +8,8 @@ ruby '2.6.0'
 #Login bundle
 gem 'devise'
 gem "stripe"
-
 gem 'image_processing'
+gem 'trix-rails', require: 'trix'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

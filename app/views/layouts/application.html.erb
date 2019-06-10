@@ -9,6 +9,8 @@
     <meta name="author" content="">
     
     
+    <%= javascript_include_tag :application %>
+    
     <!-- Bootstrap core CSS -->
   <link href="https://blackrockdigital.github.io/startbootstrap-small-business/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="/home/index">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -45,19 +47,22 @@
           <li class="nav-item">
             <%= link_to "Consultation", consultations_path, class: "nav-link" %> <!--e-->
           </li>
-           <li class="nav-item">
-           <%= link_to "Login", new_user_session_path, class:"nav-link" %> <!--e-->
-          </li>
-          <li class="nav-item">
-            <%=link_to "Logout", destroy_user_session_path, class:"nav-link" %> <!--e-->
-          </li>
-          
+           
+          <% if user_signed_in? %>
+            <div class="nav-link">Signed in as: <%= current_user.email %> (<%= link_to "Logout", destroy_user_session_path, :method => :delete %>)</div>
+            <li class="nav-item">
+              <%=link_to "Logout", destroy_user_session_path, class:"nav-link" %> <!--e-->
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class:"nav-link" %> <!--e-->
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
   </nav>
 <!-------/Navigation------->
-    
 
 
 <!--------Flash-------------->
@@ -76,23 +81,17 @@
     </div>
   
     
-    <% if user_signed_in? %>
-        <div>Signed in as...<%= current_user.email %> (<%= link_to 'Sign Out', destroy_user_session_path %>)</div>
-      <% else %>
-       <%= link_to 'Register', new_user_registration_path %> <%= link_to 'Sign In', new_user_session_path %>
-       <% end %>
+    
 <!----------/Flash---------->
 
-    
-    
-<!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-<!-- /Footer -->  
+ 
 
+
+    <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
+
 </html>
