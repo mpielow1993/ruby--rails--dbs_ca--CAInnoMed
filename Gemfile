@@ -1,15 +1,20 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.6.3'
 
-#Bootstrap
-# gem 'bootstrap-sass'
-#Login bundle
-gem 'devise'
-gem "stripe"
-gem 'image_processing'
-gem 'trix-rails', require: 'trix'
+#Begin custom gems
+gem 'devise' # login
+gem 'bootstrap' # style
+
+# JS
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'tether-rails'
+
+gem 'simple_form'
+gem "stripe" # appointment payments
+gem 'image_processing' # image uploads
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

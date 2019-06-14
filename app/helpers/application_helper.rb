@@ -1,4 +1,5 @@
 module ApplicationHelper
+<<<<<<< HEAD
     
     def resource_name
     :user
@@ -12,4 +13,6 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
   
+=======
+>>>>>>> 5b1db0f... intial commit
 end
