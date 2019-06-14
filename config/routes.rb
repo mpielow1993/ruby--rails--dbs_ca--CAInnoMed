@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :prescriptions
   resources :consultations
-  resources :orders
+
   devise_for :users
   
   post "/charge", to: "static_pages#charge"
@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :appointments
     resources :prescriptions
-    resources :orders
     resources :users
   end
   

@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :time %>
-    <%= form.datetime_select :time %>
+    <%= form.datetime_select :time, order: [:day, :month, :year], minute_step: 15 %>
   </div>
   
   <%= form.hidden_field :consultation_id, value: params[:consultation_id] %>
