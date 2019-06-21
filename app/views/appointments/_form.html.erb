@@ -35,13 +35,13 @@
     <div class="field">
       <% if current_user.is_doctor? %>
         <%= form.label :fee_amount %>
-        <%= form.text_field :fee_amount, value: Appointment::DEFAULT_FEE %>
+        <%= form.text_field :fee_amount, value: fee_amount_for_form(form.object) %>
       <% else %>
-        <%= form.hidden_field :fee_amount, value: Appointment::DEFAULT_FEE %>
+        <%= form.hidden_field :fee_amount, value: fee_amount_for_form(form.object) %>
       <% end %>
     </div>
   <% end %>
-  
+
   <%= form.hidden_field :consultation_id, value: params[:consultation_id] %>
   
   <div class="actions">

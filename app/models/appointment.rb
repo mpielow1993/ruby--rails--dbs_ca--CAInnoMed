@@ -10,8 +10,14 @@ class Appointment < ApplicationRecord
   validate :not_in_the_past
   validate :in_office_hours
   validate :doctor_isnt_busy
+
+  before_validation :update_fee_amount_to_cents
   
-  DEFAULT_FEE = 6500 # €65 in cent
+  DEFAULT_FEE = 65.00
+
+  def update_fee_amount_to_cents
+    self.fee_amount = self.fee_amount * 100
+  end
 
   def next_available_slot
     # Get next slot for a specific doctor

@@ -4,6 +4,7 @@
       <th>Patients</th>
       <th>Doctors</th>
       <th>Time</th>
+      <th>Fee</th>
       <th>Paid</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
         <td><%= appointment.patient.full_name %></td>
         <td><%= appointment.doctor.full_name %></td>
         <td><%= appointment.time %></td>
+        <td><%= number_to_currency(appointment.fee_amount / 100, unit: "€") %></td>
         <td><%= appointment.paid.to_s.titleize %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
