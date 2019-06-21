@@ -4,6 +4,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
+    # When Doctor/Patient models are fixed, this can just be current_user.appointments
     @appointments = current_user.patients_appointments
   end
 

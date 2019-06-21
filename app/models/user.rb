@@ -10,8 +10,4 @@ class User < ApplicationRecord
   def full_name
     "#{"Dr." if is_doctor?} #{first_name} #{surname}"
   end
-
-  def username
-    return self.email.split('@')[0].capitalize
-  end
 end
