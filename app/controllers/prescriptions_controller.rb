@@ -5,7 +5,7 @@ class PrescriptionsController < ApplicationController
   # GET /prescriptions
   # GET /prescriptions.json
   def index
-    @prescriptions = Prescription.all
+    @prescriptions = current_user.prescriptions
   end
 
   # GET /prescriptions/1

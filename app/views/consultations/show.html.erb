@@ -20,7 +20,6 @@
 <% @consultation.posts.each do |post| %>
   <% if post.attachment.attached? %>
   <div class="col-sm-4">
-    <%= image_tag post.attachment.variant(resize: "100x100", monochrome: true, rotate: "-90") %>
     <%= image_tag post.attachment.variant(resize: "200x200") %>
     <br />
   </div>

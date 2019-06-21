@@ -14,9 +14,11 @@
       <tr>
         <td><%= consultation.name %></td>
         <td><%= consultation.posts.count %></td>
-        <td><%= link_to 'Show', consultation %></td>
-        <td><%= link_to 'Edit', edit_consultation_path(consultation) %></td>
-        <td><%= link_to 'Destroy', consultation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', consultation %></td>
+        <% if current_user.is_doctor? %>
+          <td><%= link_to 'Edit', edit_consultation_path(consultation) %></td>
+          <td><%= link_to 'Destroy', consultation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

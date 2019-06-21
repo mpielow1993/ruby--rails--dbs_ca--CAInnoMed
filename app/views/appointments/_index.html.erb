@@ -15,12 +15,12 @@
       <tr>
         <td><%= appointment.patient.full_name %></td>
         <td><%= appointment.doctor.full_name %></td>
-        <td><%= appointment.time %></td>
+        <td><%= appointment.time.strftime("%A, %d/%m/%Y at %H:%M") %></td>
         <td><%= number_to_currency(appointment.fee_amount / 100, unit: "€") %></td>
         <td><%= appointment.paid.to_s.titleize %></td>
-        <td><%= link_to 'Show', appointment %></td>
+        <td><%= link_to 'View', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel Appointment', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

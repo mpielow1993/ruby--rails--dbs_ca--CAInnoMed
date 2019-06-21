@@ -20,9 +20,11 @@
         <td><%= prescription.diagnosis %></td>
         <td><%= prescription.doctor.full_name %></td>
         <td><%= prescription.patient.full_name %></td>
-        <td><%= link_to 'Show', prescription %></td>
-        <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
-        <td><%= link_to 'Destroy', prescription_path(prescription), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', prescription %></td>
+        <% if current_user.is_doctor? %>
+          <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
+          <td><%= link_to 'Destroy', prescription_path(prescription), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Prescription', new_prescription_path %>
+<%= link_to 'New Prescription', new_prescription_path if current_user.is_doctor? %>
