@@ -1,6 +1,7 @@
 class PrescriptionsController < ApplicationController
   before_action :set_prescription, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_doctor, only: [:new, :create, :edit, :update, :destroy]
+  
   # GET /prescriptions
   # GET /prescriptions.json
   def index
@@ -14,14 +15,11 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions/new
   def new
-    redirect_to root_path, alert: "You're not a doctor!" unless current_user.is_doctor
-    
     @prescription = Prescription.new
   end
 
   # GET /prescriptions/1/edit
   def edit
-    redirect_to root_path, alert: "You're not a doctor!" unless current_user.is_doctor
   end
 
   # POST /prescriptions

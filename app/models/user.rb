@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :patients_appointments, :class_name => 'Appointment', :foreign_key => 'patient_id'
   
   def full_name
-    "#{first_name} #{surname}"
+    "#{"Dr." if is_doctor?} #{first_name} #{surname}"
   end
 
   def username

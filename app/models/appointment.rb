@@ -23,12 +23,14 @@ class Appointment < ApplicationRecord
   end
   
   def not_in_the_past
+    return unless time_changed?
     if time < DateTime.now
       errors.add(:time, "can't be in the past.")
     end
   end
 
   def in_office_hours
+    return unless time_changed?
     if time.hour < 9 || time.hour >= 17
       errors.add(:time, "is outside of office hours.")
     end
@@ -41,7 +43,7 @@ class Appointment < ApplicationRecord
   end
   
   def has_appointment_at_this_time?
-    Appointment.where(doctor: doctor, time: time).exists?
+    Appointment.where(doctor: doctor, time: time).where.not(id: id).exists?
   end
   
   def save_and_charge(stripe_token)
