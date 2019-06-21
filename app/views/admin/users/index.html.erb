@@ -15,6 +15,7 @@
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
         <td><%= user.is_doctor %></td>
+        <td><%= link_to("Toggle", admin_user_path(user), method: :patch) unless current_user == user %></td>
       </tr>
     <% end %>
   </tbody>

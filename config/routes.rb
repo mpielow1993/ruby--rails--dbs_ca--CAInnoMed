@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   post "/charge", to: "static_pages#charge"
 
   namespace :admin do
-    resources :appointments
-    resources :prescriptions
-    resources :users
+    resources :appointments, only: [:index]
+    resources :prescriptions, only: [:index]
+    resources :users, only: [:index, :update]
   end
   
   root :to => 'static_pages#home'

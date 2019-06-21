@@ -6,8 +6,9 @@ class Admin::UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(param[:user_id])
-
-    @user.update(is_doctor: !is_doctor)
+    @user = User.find(params[:id])
+    @user.update(is_doctor: !@user.is_doctor)
+    
+    redirect_to admin_users_path, notice: "Access updated!"
   end
 end
