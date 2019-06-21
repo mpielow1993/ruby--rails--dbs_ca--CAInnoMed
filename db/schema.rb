@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_130447) do
+ActiveRecord::Schema.define(version: 2019_06_21_205131) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_130447) do
     t.datetime "updated_at", null: false
     t.boolean "paid", default: false
     t.integer "consultation_id"
+    t.integer "fee_amount"
     t.index ["consultation_id"], name: "index_appointments_on_consultation_id"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"

@@ -11,6 +11,8 @@ class Appointment < ApplicationRecord
   validate :in_office_hours
   validate :doctor_isnt_busy
   
+  DEFAULT_FEE = 6500 # €65 in cent
+
   def next_available_slot
     # Get next slot for a specific doctor
     # to use as default value for time field on Appointment form
@@ -48,10 +50,10 @@ class Appointment < ApplicationRecord
   
   def save_and_charge(stripe_token)
     update!(paid: true) && Stripe::Charge.create(
-      amount: 30000,
+      amount: fee_amount,
       currency: 'EUR',
       source: stripe_token,
-      description: "Rip off appointment prices"
+      description: "InnoMed App with #{doctor.full_name}"
     )
   end
 end

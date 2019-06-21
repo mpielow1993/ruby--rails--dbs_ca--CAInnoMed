@@ -30,6 +30,17 @@
     <%= form.label :time %>
     <%= form.datetime_select :time, order: [:day, :month, :year], minute_step: 15 %>
   </div>
+
+  <% unless @appointment.paid # cant update fee after its been paid %>
+    <div class="field">
+      <% if current_user.is_doctor? %>
+        <%= form.label :fee_amount %>
+        <%= form.text_field :fee_amount, value: Appointment::DEFAULT_FEE %>
+      <% else %>
+        <%= form.hidden_field :fee_amount, value: Appointment::DEFAULT_FEE %>
+      <% end %>
+    </div>
+  <% end %>
   
   <%= form.hidden_field :consultation_id, value: params[:consultation_id] %>
   

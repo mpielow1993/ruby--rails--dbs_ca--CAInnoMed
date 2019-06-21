@@ -14,7 +14,13 @@
 </p>
 
 <p>
-  <%= link_to "Remote Consultation Notes", Consultation.find_by(id: @appointment.consultation_id) %>
+  <% consultation = Consultation.find_by(id: @appointment.consultation_id) %>
+  <%= link_to "Remote Consultation Notes", consultation if consultation %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @appointment.fee_amount %>
 </p>
 
 <% if @appointment.paid %>
@@ -22,6 +28,7 @@
   <strong>Paid:</strong>
   <%= @appointment.paid.to_s.titleize %>
 </p>
+
 <% else %>
 <style>
 /**
