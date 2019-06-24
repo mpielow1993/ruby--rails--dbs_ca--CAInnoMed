@@ -35,9 +35,14 @@
         <div class="nav-link">
           Signed in as: <%= current_user.full_name %> (<%= link_to "Logout", destroy_user_session_path, :method => :delete %>)
         </div>
+        <% if current_user.is_doctor? %>
         <div class="nav-link">
-          <%= "Access Level: Admin" if current_user.is_doctor? %>
+            Access Level: Admin
         </div>
+        <div class="nav-link">
+            See my appointments: <%= link_to "Doctor's Appointments", doctors_path %>
+        </div>
+        <% end %>
 
       <% else %>
         <li class="nav-item">

@@ -4,4 +4,8 @@ class Admin::AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all
   end
+  
+  def doctor
+    @appointments = Appointment.where(doctor_id: current_user.id)
+  end
 end

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   post "/charge", to: "static_pages#charge"
 
+  get "/doctors", to: "admin/appointments#doctor"
+
   namespace :admin do
     resources :appointments, only: [:index]
     resources :prescriptions, only: [:index]
