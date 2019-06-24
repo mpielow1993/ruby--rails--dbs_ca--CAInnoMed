@@ -4,8 +4,5 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-today:
-  patient: patient
-  doctor: doctor
-  time: "2019-12-30 12:00"
-  fee_amount: 30000
+one:
+  name: "Consultation Name"

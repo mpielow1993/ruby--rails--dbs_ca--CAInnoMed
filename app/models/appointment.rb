@@ -6,16 +6,19 @@ class Appointment < ApplicationRecord
   
   scope :unpaid, -> { where(paid: false) }
   
+  # validates :doctor_id, :patient_id, :time, :paid, :fee_amount, presence: true
+  
   validate :doctor_isnt_own_patient
   validate :not_in_the_past
   validate :in_office_hours
   validate :doctor_isnt_busy
 
   before_validation :update_fee_amount_to_cents
-  
+
   DEFAULT_FEE = 65.00
 
   def update_fee_amount_to_cents
+    return unless self.fee_amount
     self.fee_amount = self.fee_amount * 100
   end
 
@@ -53,13 +56,5 @@ class Appointment < ApplicationRecord
   def has_appointment_at_this_time?
     Appointment.where(doctor: doctor, time: time).where.not(id: id).exists?
   end
-  
-  def save_and_charge(stripe_token)
-    update!(paid: true) && Stripe::Charge.create(
-      amount: fee_amount,
-      currency: 'EUR',
-      source: stripe_token,
-      description: "InnoMed App with #{doctor.full_name}"
-    )
-  end
+
 end

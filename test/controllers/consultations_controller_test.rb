@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class ConsultationsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    sign_in users(:doctor)
     @consultation = consultations(:one)
   end
 
@@ -17,7 +20,7 @@ class ConsultationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create consultation" do
     assert_difference('Consultation.count') do
-      post consultations_url, params: { consultation: {  } }
+      post consultations_url, params: { consultation: { name: "Consultation Name" } }
     end
 
     assert_redirected_to consultation_url(Consultation.last)

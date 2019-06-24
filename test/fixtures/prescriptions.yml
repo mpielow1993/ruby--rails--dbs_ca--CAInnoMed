@@ -4,8 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-today:
-  patient: patient
-  doctor: doctor
-  time: "2019-12-30 12:00"
-  fee_amount: 30000
+cocaine:
+  doctor: doctor # fixture called doctor in users.yml
+  patient: patient # fixture called patient in users.yml
+  drug: "Cocaine"
+  quantity: 100

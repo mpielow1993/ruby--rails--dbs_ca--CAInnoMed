@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  include ActionMailer::TestHelper
+
   setup do
-    @prescription = prescriptions(:one)
+    sign_in users(:doctor)
+    @prescription = prescriptions(:cocaine)
   end
 
   test "should get index" do
@@ -21,6 +25,7 @@ class PrescriptionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to prescription_url(Prescription.last)
+    assert_emails 1 # checks after commit send_to_patient is run
   end
 
   test "should show prescription" do

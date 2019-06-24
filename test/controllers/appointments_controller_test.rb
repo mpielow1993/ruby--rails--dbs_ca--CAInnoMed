@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class AppointmentsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @appointment = appointments(:one)
+    sign_in users(:doctor)
+    @appointment = appointments(:today)
   end
 
   test "should get index" do
@@ -17,7 +20,14 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create appointment" do
     assert_difference('Appointment.count') do
-      post appointments_url, params: { appointment: { appointment_address: @appointment.appointment_address, appointment_time: @appointment.appointment_time, doctors_id: @appointment.doctors_id, patients_id: @appointment.patients_id } }
+      post appointments_url, params: { appointment: {
+        # This uses the same params as appointment(:today), but is a new/different record
+        doctor_id: @appointment.doctor_id,
+        patient_id: @appointment.patient_id,
+        time: @appointment.time + 1.hour, # Due to doctor_isnt_busy validation
+        paid: @appointment.paid, 
+        fee_amount: @appointment.fee_amount
+      } }
     end
 
     assert_redirected_to appointment_url(Appointment.last)
@@ -34,7 +44,13 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update appointment" do
-    patch appointment_url(@appointment), params: { appointment: { appointment_address: @appointment.appointment_address, appointment_time: @appointment.appointment_time, doctors_id: @appointment.doctors_id, patients_id: @appointment.patients_id } }
+    patch appointment_url(@appointment), params: { appointment: {
+      doctor_id: @appointment.doctor_id,
+      patient_id: @appointment.patient_id,
+      time: @appointment.time,
+      paid: @appointment.paid, 
+      fee_amount: @appointment.fee_amount
+    } }
     assert_redirected_to appointment_url(@appointment)
   end
 

@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class PrescriptionsTest < ApplicationSystemTestCase
   setup do
-    @prescription = prescriptions(:one)
+    @prescription = prescriptions(:cocaine)
   end
 
   test "visiting the index" do
