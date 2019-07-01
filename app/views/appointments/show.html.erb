@@ -28,7 +28,11 @@
   <strong>Paid:</strong>
   <%= @appointment.paid.to_s.titleize %>
 </p>
-
+  <%= if @appointment.time >= DateTime.now && @appointment.time <= DateTime.now + (1/24.0) %>
+    <p>
+      <%= link_to "Commence Appointment", pages_path %>
+    </p>
+  <% end %>
 <% else %>
 <style>
 /**
