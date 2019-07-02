@@ -22,17 +22,16 @@
   <strong>Fee:</strong>
   <%= number_to_currency(@appointment.fee_amount / 100, unit: "€") %>
 </p>
-
-<% if @appointment.paid %>
-<p>
-  <strong>Paid:</strong>
-  <%= @appointment.paid.to_s.titleize %>
-</p>
-  <%= if @appointment.time >= DateTime.now && @appointment.time <= DateTime.now + (1/24.0) %>
-    <p>
-      <%= link_to "Commence Appointment", pages_path %>
-    </p>
-  <% end %>
+<% if @appointment.time >= DateTime.now && @appointment.time <= DateTime.now + (1.0/24) %>
+  <p>
+    <%= link_to "Commence Appointment", pages_path %>
+  </p>
+<% end %>
+  <% if @appointment.paid %>
+  <p>
+    <strong>Paid:</strong>
+    <%= @appointment.paid.to_s.titleize %>
+  </p>
 <% else %>
 <style>
 /**

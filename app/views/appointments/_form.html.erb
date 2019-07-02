@@ -14,10 +14,10 @@
   <div class="field">
     <%= form.label :patient_id %>
     <% if current_user.is_doctor? %>
-      <%= form.collection_select :user_id, User.all, :id, :full_name, prompt: "Pick Patient" %>
+      <%= form.collection_select :patient_id, User.all, :id, :full_name, prompt: "Pick Patient" %>
     <% else %>
       <%= current_user.full_name %>
-      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :patient_id, value: current_user.id %>
     <% end %>
   </div>
 
