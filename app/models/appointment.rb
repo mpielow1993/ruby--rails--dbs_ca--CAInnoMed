@@ -19,6 +19,7 @@ class Appointment < ApplicationRecord
 
   def update_fee_amount_to_cents
     return unless self.fee_amount
+    return unless self.will_save_change_to_fee_amount?
     self.fee_amount = self.fee_amount * 100
   end
 
