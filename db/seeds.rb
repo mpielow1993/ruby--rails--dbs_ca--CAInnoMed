@@ -7,12 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Admins / Doctors
-User.create!(email: "emily@mail.com", first_name: "Emily", surname: "Bowe", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
+emily = User.create!(email: "emily@mail.com", first_name: "Emily", surname: "Bowe", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
 User.create!(email: "richard@mail.com", first_name: "Richard", surname: "Condon", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
 User.create!(email: "paul@mail.com", first_name: "Paul", surname: "Boland", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
 User.create!(email: "mark@mail.com", first_name: "Mark", surname: "Sparky", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
 
 # Users / Patients
-User.create!(email: "alice@mail.com", first_name: "Alice", surname: "Red", password: "secretpw", password_confirmation: "secretpw", is_doctor: false)
+alice = User.create!(email: "alice@mail.com", first_name: "Alice", surname: "Red", password: "secretpw", password_confirmation: "secretpw", is_doctor: false)
 User.create!(email: "bob@mail.com", first_name: "Bob", surname: "Blue", password: "secretpw", password_confirmation: "secretpw", is_doctor: false)
 User.create!(email: "claire@mail.com", first_name: "Claire", surname: "Green", password: "secretpw", password_confirmation: "secretpw", is_doctor: false)
+
+# Appointment
+Appointment.create(doctor: emily, patient: alice, time: "2020-12-30 12:00", paid: false, fee_amount: 65)

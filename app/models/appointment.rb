@@ -57,4 +57,12 @@ class Appointment < ApplicationRecord
     Appointment.where(doctor: doctor, time: time).where.not(id: id).exists?
   end
 
+  def save_and_charge(stripe_token)
+    update!(paid: true) && Stripe::Charge.create(
+      amount: fee_amount.to_i,
+      currency: 'EUR',
+      source: stripe_token,
+      description: "InnoMed App with #{doctor.full_name}"
+    )
+  end
 end

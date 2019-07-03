@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 // Create a Stripe client.
 var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
