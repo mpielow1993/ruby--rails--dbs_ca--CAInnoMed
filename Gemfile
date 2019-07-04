@@ -11,6 +11,7 @@ gem 'bootstrap' # style
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
+gem 'mail_form'
 
 gem 'simple_form'
 gem "stripe" # appointment payments

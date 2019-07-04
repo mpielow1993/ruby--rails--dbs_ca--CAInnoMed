@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :prescriptions
   resources :consultations
+  resources :contacts, only: [:new, :create]
 
   devise_for :users
   
