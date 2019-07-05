@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
 gem 'mail_form'
+gem 'sendgrid-ruby'
+
 
 gem 'simple_form'
 gem "stripe" # appointment payments
