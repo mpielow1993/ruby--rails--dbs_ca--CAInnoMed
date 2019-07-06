@@ -24,7 +24,7 @@
 </p>
 <% if @appointment.time >= DateTime.now && @appointment.time <= DateTime.now + (1.0/24) %>
   <p>
-    <%= link_to "Commence Appointment", pages_path %>
+    <%= link_to "Commence Appointment", live_appointments_path %>
   </p>
 <% end %>
   <% if @appointment.paid %>
