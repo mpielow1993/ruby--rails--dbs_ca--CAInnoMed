@@ -62,6 +62,13 @@ class AppointmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+    # GET /appointments/1/live
+  def live
+    @appointment = Appointment.find(params[:id])
+    @messages = Message.last(10)
+    @message = Message.new
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,19 +1,26 @@
 <div class="jumbotron">
     <h1 style="text-align: center">Consultation Session</h1>
-    <div class="well" id="message_box" style="height: 250px; border: solid 1px #222222; overflow-y: scroll;">
+    <h2>Doctor ID: <%= @appointment.doctor_id %></h2>
+    <h2>Patient ID: <%= @appointment.patient_id %></h2>
+    <div class="well" id="message_box" style="height: 250px; border: solid 1px #222222; overflow-y: scroll; background-color: #fff;">
         <% @messages.each do |message| %>
             <%= render 'messages/message', message: message %>
         <% end %>
     </div>
     <% if current_user %>
-        <%= form_with model: @message do |f| %>
+        <%= form_with model: @message, remote: true do |f| %>
             <div class="input-group mb-3">
                 <%= f.text_field :body, placeholder: "Say Something...", class: "form-control" %>
                 <div class="input-group-append">
                     <%= f.submit "Send", class: "btn btn-secondary" %>
                 </div>
             </div>
-        <% end %>
+            <div style="text-align: center">
+            <% if current_user.is_doctor? %>
+                <div>
+                    <%= link_to "End Session", appointments_path, class: "btn btn-danger", data: {confirm: 'Are you sure you want to end this appointment?'} %>
+                </div>
+            <% end %>
     <% else %>
         <p style="text-align: center">You need to be <%= link_to "signed in", new_user_session_path %> in order to chat!</p>
     <% end %>
