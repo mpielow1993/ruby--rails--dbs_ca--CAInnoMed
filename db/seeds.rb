@@ -8,9 +8,9 @@
 
 # Admins / Doctors
 emily = User.create!(email: "emily@mail.com", first_name: "Emily", surname: "Bowe", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
-User.create!(email: "richard@mail.com", first_name: "Richard", surname: "Condon", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
-User.create!(email: "paul@mail.com", first_name: "Paul", surname: "Boland", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
-User.create!(email: "mark@mail.com", first_name: "Mark", surname: "Sparky", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
+User.create!(email: "MichaelB@mail.com", first_name: "Michael", surname: "Bell", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
+User.create!(email: "MichaleP@mail.com", first_name: "MichaelP", surname: "Pielow", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
+User.create!(email: "Avril@mail.com", first_name: "Avril", surname: "Watson", password: "secretpw", password_confirmation: "secretpw", is_doctor: true)
 
 # Users / Patients
 alice = User.create!(email: "alice@mail.com", first_name: "Alice", surname: "Red", password: "secretpw", password_confirmation: "secretpw", is_doctor: false)
