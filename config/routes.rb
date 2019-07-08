@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'startup/index'
   get "about", to: "static_pages#about"
   get "contact", to: "static_pages#contacts"
   
