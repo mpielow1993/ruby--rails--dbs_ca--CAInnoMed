@@ -19,6 +19,11 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
+.bg-color {
+    background-color: RGBA(13, 70, 83, 0.78);
+    min-height: 650px;
+}
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -54,6 +59,8 @@ hr.botm-line {
     border: 0;
     margin: 20px 0 20px 0;
 }
+
+
 #footer{
 	background-color: #325C6A;
 }
