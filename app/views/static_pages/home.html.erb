@@ -1,19 +1,20 @@
 <!-- Page Content -->
-  <div class="container">
+<div class="container">
 
     <!-- Heading Row -->
-    <div class="row align-items-center my-5">
-      <div class="col-lg-7">
-        <%= image_tag(image_path('InnoMed.jpg')) -%>
+      <div class="row align-items-center my-5">
+        <div class="card img-fluid">
+          <%= image_tag(image_path('bg-banner.jpg')) %>
+          <div class="card-img-overlay">
+            <h1 class="card-title" style = "text-align: center; padding: 70px 0;">InnoMed</h1>
+            <p class="card-text" style = "text-align: center;">Are you broken? Let us fix you.</p>
+            <p style= "text-align: center;">
+              <%=link_to "Book Appointment", new_appointment_path, class:"btn btn-primary"%>
+            </p>
+          </div>
+        </div>
       </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-5">
-        <h1 class="font-weight-light">InnoMed</h1>
-        <p>Are you broken? Let us fix you.</p>
-        <%=link_to "Book Appointment", new_appointment_path, class:"btn btn-primary"%>
-      </div>
-      <!-- /.col-md-4 -->
-    </div>
+
     <!-- /.row -->
 
     <!-- Call to Action Well -->
