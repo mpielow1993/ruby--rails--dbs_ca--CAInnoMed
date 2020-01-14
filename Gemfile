@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 #Begin custom gems
-gem 'devise' # login
 gem 'bootstrap' # style
 
 # JS
@@ -15,7 +14,6 @@ gem 'mail_form'
 gem 'sendgrid-ruby'
 
 
-gem 'simple_form'
 gem "stripe" # appointment payments
 gem 'image_processing' # image uploads
 
@@ -24,7 +22,7 @@ gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem "puma", ">= 3.12.2"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -42,8 +40,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem "bootstrap-sass", ">= 3.4.1"
 gem 'autoprefixer-rails'
+
+gem "rack", ">= 2.0.8"
+gem "simple_form", ">= 5.0.0"
+gem "loofah", ">= 2.3.1"
+gem "rubyzip", ">= 1.3.0"
+gem "devise", ">= 4.7.1"
+gem "nokogiri", ">= 1.10.4"
+gem "mini_magick", ">= 4.9.4"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -73,7 +79,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
